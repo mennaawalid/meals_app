@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'screens/filters_screen.dart';
 import 'screens/categories_screen.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/meal_details_screen.dart';
@@ -31,6 +32,11 @@ class MyApp extends StatelessWidget {
             )),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
+              headlineLarge: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w900,
+                fontSize: 26,
+              ),
               bodyText1: const TextStyle(
                 color: Color.fromARGB(255, 0, 0, 0),
               ),
@@ -58,6 +64,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const TabsScreen(),
         CategoryMealsScreen.routeName: (context) => const CategoryMealsScreen(),
         MealsDetailsScreen.routeName: (context) => const MealsDetailsScreen(),
+        FiltersScreen.routeName: (context) => const FiltersScreen(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
