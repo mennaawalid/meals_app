@@ -6,11 +6,9 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        title,
-        style: Theme.of(context).textTheme.headline6,
-      ),
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.headline6,
     );
   }
 }
