@@ -5,7 +5,11 @@ import '../widgets/ingredients_title_and_list.dart';
 import '../widgets/steps_title_and_list.dart';
 
 class MealsDetailsScreen extends StatelessWidget {
-  const MealsDetailsScreen({super.key});
+  final Function toggleFavorites;
+  final Function isFavorite;
+
+  const MealsDetailsScreen(
+      {super.key, required this.toggleFavorites, required this.isFavorite});
   static const routeName = '/meals-details-screen';
 
   @override
@@ -15,7 +19,7 @@ class MealsDetailsScreen extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
-    ;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(mealData.title),
@@ -67,6 +71,19 @@ class MealsDetailsScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        onPressed: () {
+          toggleFavorites(mealData.id);
+        },
+        child: isFavorite(mealData.id)
+            ? Icon(
+                Icons.favorite,
+                color: Theme.of(context).colorScheme.primary,
+              )
+            : Icon(Icons.favorite_border,
+                color: Theme.of(context).colorScheme.primary),
       ),
     );
   }
